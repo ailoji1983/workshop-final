@@ -125,8 +125,3 @@ Actualmente el proyecto incluye una suite funcional básica centrada en:
 - carrito;
 - logout.
 
-Como mejora futura, se puede completar el flujo de checkout y ampliar la cobertura con más escenarios de regresión. [cite:380][cite:425]
-
-## Autor
-
-Proyecto realizado como parte del workshop final de automatización web con Selenium.
