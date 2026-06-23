@@ -1,0 +1,6 @@
+com/exemple/tests/FlowTest.class
+com/exemple/tests/LoginTest.class
+com/exemple/tests/BaseTest.class
+com/exemple/tests/NavigationTest.class
+com/exemple/tests/CheckoutTest.class
+com/exemple/tests/CartTest.class

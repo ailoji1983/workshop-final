@@ -1,7 +1,7 @@
 package com.exemple.tests;
 
-import com.exemple.pages.InventoryPage;
-import com.exemple.pages.LoginPage;
+import com.example.pages.InventoryPage;
+import com.example.pages.LoginPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

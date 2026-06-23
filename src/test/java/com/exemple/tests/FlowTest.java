@@ -1,16 +1,14 @@
 package com.exemple.tests;
 
-import com.exemple.pages.CartPage;
-import com.exemple.pages.CheckoutPage;
-import com.exemple.pages.InventoryPage;
-import com.exemple.pages.LoginPage;
+import com.example.pages.InventoryPage;
+import com.example.pages.LoginPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class FlowTest extends BaseTest {
 
     @Test
-    void fluxCompletCompraILogout() {
+    void fluxLoginILogout() {
         try {
             LoginPage loginPage = new LoginPage(driver);
             loginPage.abrir();
@@ -18,21 +16,6 @@ public class FlowTest extends BaseTest {
 
             InventoryPage inventoryPage = new InventoryPage(driver);
             Assertions.assertEquals("Products", inventoryPage.obtenerTitulo());
-
-            inventoryPage.añadirPrimerProducto();
-            inventoryPage.abrirCarrito();
-
-            CartPage cartPage = new CartPage(driver);
-            Assertions.assertEquals("Your Cart", cartPage.obtenerTitulo());
-
-            CheckoutPage checkoutPage = cartPage.iniciarCheckout();
-            checkoutPage.rellenarFormulario("Aitor", "Lopez", "08201");
-            checkoutPage.continuar();
-
-            Assertions.assertEquals("Checkout: Overview", checkoutPage.obtenerTitulo());
-
-            driver.navigate().back();
-            driver.navigate().back();
 
             inventoryPage.abrirMenu();
             inventoryPage.hacerLogout();

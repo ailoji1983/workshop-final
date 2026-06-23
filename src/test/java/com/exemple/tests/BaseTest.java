@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -23,10 +24,21 @@ public class BaseTest {
     void setUp(TestInfo testInfo) {
         this.testInfo = testInfo;
         this.testFailed = false;
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
+        WebDriverManager.chromedriver().driverVersion("149.0.7827.156").setup();
+
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary("/var/lib/flatpak/exports/bin/com.google.Chrome");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--remote-debugging-port=9222");
+        options.addArguments("--user-data-dir=/tmp/selenium-chrome-profile");
+        options.addArguments("--start-maximized");
+
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        driver.get("https://www.saucedemo.com/");
     }
 
     @AfterEach
